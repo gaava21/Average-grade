@@ -1,0 +1,50 @@
+Imports System
+Imports System.Numerics
+
+Module Program
+
+Sub VectorNotas()
+    Dim notas(5) As Double
+
+    For i As Integer = 0 To 5
+        Console.WriteLine("Ingrese la nota " & i + 1 & ":")
+        notas(i) = Convert.ToDouble(Console.ReadLine())
+    Next
+
+    Dim nMayor As Double = notas(0)
+    Dim nMenor As Double = notas(0)
+    Dim sumaNotas As Double = notas(0)
+
+    For i As Integer = 1 To 5
+        If notas(i) > nMayor Then
+            nMayor = notas(i)
+        End If
+
+        If notas(i) < nMenor Then
+            nMenor = notas(i)
+        End If
+
+        sumaNotas += notas(i)
+    Next
+
+    Dim promedio As Double = sumaNotas / 6
+
+    Dim estado As String
+    If promedio >= 6.0 Then
+        estado = "aprobado"
+    Else
+        estado = "reprobado"
+    End If
+
+    Console.WriteLine($"Nota Mayor: {nMayor}")
+    Console.WriteLine($"Nota Menor: {nMenor}")
+    Console.WriteLine($"Promedio: {promedio}")
+    Console.WriteLine($"El estudiante ha {estado} la materia")
+
+    Console.ReadLine()
+End Sub
+
+    Sub Main(args As String())
+        VectorNotas()
+    End Sub
+End Module
